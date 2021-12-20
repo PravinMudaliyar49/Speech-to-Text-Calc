@@ -1,6 +1,12 @@
 let output = $(".output");
 var textBox = $("#textbox");
 var instruction = $("#instructions");
+let themeBtn = document.querySelector('#btnTheme');
+let speakBtn = document.querySelector("#btnSpeak");
+let startBtn = document.querySelector("#start-btn");
+let clearBtn = document.querySelector("#clear-btn");
+let darkMode = false;
+
 let map = new Map([
   ['one', 1],
   ['two', 2],
@@ -115,6 +121,7 @@ var recognition = new speechRecognition();
 recognition.continuous = true;
 
 var content = "";
+let speechResult;
 
 recognition.onstart = function () {
   instruction.text("Voice recognition is on");
@@ -163,22 +170,21 @@ recognition.onresult = function (event) {
 
   let prevContent = content;
   content += transcript;
-  let text;
 
   try {
-    text = eval(content);
+    speechResult = eval(content);
   } catch (err) {
     console.log('splashed', content);
 
     content = prevContent;
-    text = eval(content);
+    speechResult = eval(content);
   }
 
   textBox.val(content);
-  output.val(text);
+  output.val(speechResult);
 };
 
-$("#start-btn").click(function (event) {
+startBtn.addEventListener("click", () => {
   if (content.length) {
     content += "";
   }
@@ -186,16 +192,43 @@ $("#start-btn").click(function (event) {
   recognition.start();
 });
 
-$("#clear-btn").click(function (event) {
+clearBtn.addEventListener("click", () => {
   content = "";
   textBox.val("");
   output.val("");
 
-  console.log(output.value, textBox.value);
+  // location.reload();
 });
+
+themeBtn.addEventListener("click", () => {
+  darkMode = !darkMode;
+  toggleTheme();
+});
+
+function toggleTheme() {
+  document.body.classList.toggle("dark-mode");
+
+  if (darkMode) {
+    speakBtn.style.backgroundColor = '#cfdb63';
+    themeBtn.style.backgroundColor = '#cfdb63';
+    startBtn.style.backgroundColor = '#cfdb63'
+    clearBtn.style.backgroundColor = '#cfdb63'
+  } else {
+    speakBtn.style.backgroundColor = '#7be672a1';
+    themeBtn.style.backgroundColor = '#7be672a1';
+    startBtn.style.backgroundColor = '#7be672a1'
+    clearBtn.style.backgroundColor = '#7be672a1'
+  }
+}
+
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  speakBtn.classList.toggle("")
+}
 
 /* textBox.on('input', function () {
     content = $(this).val();
     console.log(content);
 })
-*/  
+*/

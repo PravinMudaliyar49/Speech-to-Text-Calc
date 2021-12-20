@@ -15,21 +15,36 @@
 textarea {
     height: 10rem;
     width: 20rem;
-    border: 3px solid cyan;
+    font-size: x-large;
+    border: 3px solid rgb(66, 179, 37);
     resize: none;
 }
 
-.actions-cont {
+.top-action-cont {
+    gap: 5px;
+}
+
+.top-action-cont>button {
+    background-color: #7be672a1;
+    cursor: pointer;
+}
+
+.bottom-actions-cont {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.actions-cont>button {
-    background-color: blue;
-    color: wheat;
+.bottom-actions-cont>button {
+    background-color: #7be672a1;
+    color: black;
     height: 2rem;
     width: 20rem;
     margin: 0.1rem;
     cursor: pointer;
+}
+
+.dark-mode {
+    background-color: #000000;
+    color: white;
 }

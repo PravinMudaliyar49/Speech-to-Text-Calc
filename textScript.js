@@ -7,12 +7,16 @@ window.speechSynthesis.onvoiceschanged = () => {
     speech.voice = voices[0];
 };
 
-document.querySelector("#btnSpeak").addEventListener("click", () => {
+speakBtn.addEventListener("click", () => {
     /* let toSpeak = content + 'And the output is ' + text;
     speech.text = toSpeak;
     */
 
     speech.text = content;
+
+    if (speechResult) {
+        speech.text += 'And the answer is ' + speechResult;
+    }
     // speech.rate = 5;
     window.speechSynthesis.speak(speech);
 });
