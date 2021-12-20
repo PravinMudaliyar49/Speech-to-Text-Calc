@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: calc((100vh - 30rem) / 2);
+    left: calc((100vw - 20rem) / 2);
+}
+
+textarea {
+    height: 10rem;
+    width: 20rem;
+    border: 3px solid cyan;
+    resize: none;
+}
+
+.actions-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.actions-cont>button {
+    background-color: blue;
+    color: wheat;
+    height: 2rem;
+    width: 20rem;
+    margin: 0.1rem;
+    cursor: pointer;
+}
